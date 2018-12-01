@@ -1,22 +1,22 @@
 
 
-var matrix= [];
+var matrix = [];
 var side = 50;
 var grassArr = [];
 var xotakerArr = [];
-var gishatichArr =[];
-var mardArr=[];
-var satanaArr=[];
+var gishatichArr = [];
+var mardArr = [];
+var satanaArr = [];
 function setup() {
-   var m = 20;
-var mat = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,5,5];
-for(var y = 0;y<m;y++){
-  matrix.push([])
-  for(x = 0; x<m;x++){
-    var r = Math.floor(Math.random()*mat.length);
-    matrix[y].push(mat[r]);
-  }
-}
+    var m = 20;
+    var mat = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 5, 5];
+    for (var y = 0; y < m; y++) {
+        matrix.push([])
+        for (x = 0; x < m; x++) {
+            var r = Math.floor(Math.random() * mat.length);
+            matrix[y].push(mat[r]);
+        }
+    }
 
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
@@ -36,17 +36,17 @@ for(var y = 0;y<m;y++){
                 var mrd = new Mard(x, y);
                 mardArr.push(mrd);
             }
-             else if (matrix[y][x] == 5) {
+            else if (matrix[y][x] == 5) {
                 var stn = new Satana(x, y);
                 satanaArr.push(stn);
             }
-            
-           
-           
+
+
+
         }
     }
 
-    frameRate(5)  ;
+    frameRate(5);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
 }
@@ -69,16 +69,16 @@ function draw() {
             else if (matrix[y][x] == 3) {
                 fill("red");
             }
-            else if ( matrix[y][x]==4){
+            else if (matrix[y][x] == 4) {
                 fill("#25146b");
             }
-             else if ( matrix[y][x]==5){
+            else if (matrix[y][x] == 5) {
                 fill("#000000");
             }
 
             rect(x * side, y * side, side, side)
 
-           
+
         }
     }
 
@@ -109,6 +109,6 @@ function draw() {
         satanaArr[i].move()
         satanaArr[i].die()
     }
-   
+
 }
 
