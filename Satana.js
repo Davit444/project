@@ -1,4 +1,5 @@
-class Satana extends LivingCreature {
+var LivingCreature = require("./LivingCreature");
+module.exports=class Satana extends LivingCreature {
     getNewDirections() {
         this.directions = [
             [this.x - 1, this.y - 1],
