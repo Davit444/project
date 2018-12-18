@@ -6,26 +6,28 @@ var io = require('socket.io')(server);
 
 app.use(express.static("."));
 app.get('/', function (req, res) {
-   res.redirect('index.html');
+    res.redirect('index.html');
 });
 server.listen(3000);
 
 var Grass = require("./Grass.js");
 var Xotaker = require("./Xotaker.js");
 var Gishatich = require("./Gishatich.js");
-var Mard = require("./Mard,js");
-var Satana =require("./Satana.js");
+var Mard = require("./Mard.js");
+var Satana = require("./Satana.js");
 
+io.on('connection', function (socket) {
 
-var matrix = [];
+});
 var grassArr = [];
 var xotakerArr = [];
 var gishatichArr = [];
-var mardArr = [];   
+var mardArr = [];
 var satanaArr = [];
+var matrix = [];
 
 var m = 20;
-var mat = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 5, 5];
+var mat = [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 4, 5];
 for (var y = 0; y < m; y++) {
     matrix.push([])
     for (x = 0; x < m; x++) {
@@ -99,6 +101,7 @@ function drawServerayin() {
         satanaArr[i].move()
         satanaArr[i].die()
     }
+    io.sockets.emit("matrica sarqi", matrix);
 
 }
 setInterval(drawServerayin, 1000);

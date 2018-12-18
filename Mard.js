@@ -86,11 +86,12 @@ module.exports=class Mard extends LivingCreature {
 
     }
     move() {
-        var empty = random(this.chooseCell(0, 1))
+        var arr = this.chooseCell(0,1);
+        var norVandak=arr[Math.floor(Math.random()* arr.length)]
         this.energy-= 2;
-        if (empty) {
-            var newX = empty[0]
-            var newY = empty[1]
+        if (norVandak) {
+            var newX = norVandak[0]
+            var newY = norVandak[1]
             if (matrix[newY][newX] == 1) {
                 for (var i in grassArr) {
                     if (grassArr[i].x == newX && grassArr[i].y == newY) {
@@ -111,10 +112,11 @@ module.exports=class Mard extends LivingCreature {
         }
     }
     eat() {
-        var food = random(this.chooseCell(3))
-        if (food) {
-            var newX = food[0]
-            var newY = food[1]
+        var arr = this.chooseCell(3);
+        var norVandak=arr[Math.floor(Math.random()* arr.length)]
+        if (norVandak) {
+            var newX = norVandak[0]
+            var newY = norVandak[1]
             matrix[newY][newX] = 0
 
 

@@ -43,11 +43,12 @@ module.exports=class Satana extends LivingCreature {
 
 
     move() {
-        var empty = random(this.chooseCell(0, 3))
+        var arr = this.chooseCell(0,3);
+        var norVandak=arr[Math.floor(Math.random()* arr.length)]
         this.energy-= 2;
-        if (empty) {
-            var newX = empty[0]
-            var newY = empty[1]
+        if (norVandak) {
+            var newX = norVandak[0]
+            var newY = norVandak[1]
 
             if (matrix[newY][newX] == 3) {
                 for (var i in gishatichArr) {
@@ -72,10 +73,11 @@ module.exports=class Satana extends LivingCreature {
 
 
     eat() {
-        var food = random(this.chooseCell(1))
+        var arr = this.chooseCell(1);
+        var norVandak=arr[Math.floor(Math.random()* arr.length)]
         if (food) {
-            var newX = food[0]
-            var newY = food[1]
+            var newX = norVandak[0]
+            var newY = norVandak[1]
             matrix[newY][newX] = 5
             matrix[this.y][this.x] = 0
 
