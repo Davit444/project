@@ -1,5 +1,9 @@
 var LivingCreature = require("./LivingCreature");
 module.exports=class Xotaker extends LivingCreature {
+    constructor(x, y, index){
+        super(x, y, index)
+        this.energy =9;
+    }
     getNewDirections() {
         this.directions = [
             [this.x - 1, this.y - 1],

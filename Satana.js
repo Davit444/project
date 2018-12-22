@@ -1,5 +1,9 @@
 var LivingCreature = require("./LivingCreature");
 module.exports=class Satana extends LivingCreature {
+    constructor(x, y, index){
+        super(x, y, index)
+        this.energy =100;
+    }
     getNewDirections() {
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -75,7 +79,7 @@ module.exports=class Satana extends LivingCreature {
     eat() {
         var arr = this.chooseCell(1);
         var norVandak=arr[Math.floor(Math.random()* arr.length)]
-        if (food) {
+        if (norVandak) {
             var newX = norVandak[0]
             var newY = norVandak[1]
             matrix[newY][newX] = 5

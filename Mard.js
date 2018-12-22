@@ -29,6 +29,9 @@ module.exports=class Mard extends LivingCreature {
             [this.x - 2, this.y - 2]
 
         ]
+       
+            this.energy =100;
+        
     }
     getNewDirections() {
         this.directions = [

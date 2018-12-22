@@ -10,23 +10,24 @@ app.get('/', function (req, res) {
 });
 server.listen(3000);
 
-var Grass = require("./Grass.js");
-var Xotaker = require("./Xotaker.js");
-var Gishatich = require("./Gishatich.js");
-var Mard = require("./Mard.js");
-var Satana = require("./Satana.js");
+Grass = require("./Grass.js");
+Xotaker = require("./Xotaker.js");
+Gishatich = require("./Gishatich.js");
+Mard = require("./Mard.js");
+Satana = require("./Satana.js");
 
 io.on('connection', function (socket) {
 
 });
-var grassArr = [];
-var xotakerArr = [];
-var gishatichArr = [];
-var mardArr = [];
-var satanaArr = [];
-var matrix = [];
+weather = "spring";
+grassArr = [];
+xotakerArr = [];
+gishatichArr = [];
+mardArr = [];
+satanaArr = [];
+matrix = [];
 
-var m = 20;
+var m =20;
 var mat = [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 4, 5];
 for (var y = 0; y < m; y++) {
     matrix.push([])
@@ -34,7 +35,7 @@ for (var y = 0; y < m; y++) {
         var r = Math.floor(Math.random() * mat.length);
         matrix[y].push(mat[r]);
     }
-}
+}console.log(matrix)
 
 
 for (var y = 0; y < matrix.length; y++) {
@@ -68,7 +69,22 @@ for (var y = 0; y < matrix.length; y++) {
 
 
 
-
+setInterval(changeWeather, 5000);
+function changeWeather() {
+    if (weather == "spring") {
+        weather = "summer"
+    }
+    else if (weather == "summer") {
+        weather =="autmn"
+    }
+    else if (weather == "autmn") {
+        weather = "winter"
+    }
+    else if (weather == "winter") {
+        weather = "spring"
+    }
+    io.sockets.emit("changeWeather", weather);
+}
 
 
 function drawServerayin() {
@@ -101,7 +117,7 @@ function drawServerayin() {
         satanaArr[i].move()
         satanaArr[i].die()
     }
-    io.sockets.emit("matrica sarqi", matrix);
+    io.sockets.emit("matrix", matrix);
 
 }
 setInterval(drawServerayin, 1000);
